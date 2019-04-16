@@ -34,7 +34,7 @@ class M3UGenAceStream:
                 channel_handler.data_set = data_set
                 channel_handler.write_playlist()
 
-                if data_set_number < len(Config.DATA_SETS):
+                if data_set_number < len(Config.DATA_SETS):  # TODO: Do not wait if using cached response.
                     print('Sleeping for', timedelta(seconds=Config.DATA_SET_DELAY),
                           'before processing next data set...')
                     sleep(Config.DATA_SET_DELAY)
@@ -59,8 +59,9 @@ if __name__ == '__main__':
 
         if Config.MAIL_ON_CRASH:
             print('Sending notification.', file=stderr)
-            Utils.send_email('m3u-gen-acestream has crashed on ' + gethostname() + '@' + gethostbyname(gethostname()),
-                             format_exc())
+
+            subject: str = 'm3u-gen-acestream has crashed on ' + gethostname() + '@' + gethostbyname(gethostname())
+            Utils.send_email(subject, format_exc())
 
         if Config.PAUSE_ON_CRASH:
             input('Press <Enter> to exit...\n')

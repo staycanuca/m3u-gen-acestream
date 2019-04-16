@@ -1,5 +1,7 @@
 {
-  "replaceCats": [
+  "replaceCatsByCats": [
+  ],
+  "replaceCatsByNames": [
   ],
   "excludeCats": [
   ],

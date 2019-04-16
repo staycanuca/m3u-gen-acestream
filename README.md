@@ -15,15 +15,27 @@
 ## Notes:
 See `./src/config/config.py` to configure program behavior.
 
-See `./src/filter/filter.json` to configure filter. See formatting in the config file.
+See `./src/filter/filter.json` to configure filter.
+See formatting in the config file.
 
-See `./src/channel/injection.json` to configure channel injections. See formatting in the config file.
+See `./src/channel/injection.json` to configure channel injections.
+See formatting in the config file.
 
 Default output folder: `./out/`.
 
-Tested with [Python 3.7](https://www.python.org/downloads/release/python-370/).
+Tested with [Python 3.7.1](https://www.python.org/downloads/release/python-371/).
 
 ---
-Check other generators:
-* [m3u-gen-aceproxy](https://github.com/SCP002/m3u-gen-aceproxy) - for HTTPAceProxy.
-* [m3u-gen-noxbit](https://github.com/SCP002/m3u-gen-noxbit) - for Noxbit.
+If you want to serve generated files over http, you can use
+python built-in http server module, for example:
+
+```sh
+cd out
+python -m http.server 7999
+```
+
+The command above will serve output directory on port `7999`.
+
+So generated files can be accessed via local network and you can
+open links like `<your-local-ip>:7999/<playlist-file-name>` in
+IPTV player directly.
